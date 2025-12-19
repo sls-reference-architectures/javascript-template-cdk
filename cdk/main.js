@@ -18,8 +18,12 @@ if (!stableStageName) {
 
 const serviceName = 'javascript-template-cdk';
 
-new MyStack(app, `${serviceName}-${stageName}`, {
-  serviceName,
-  stageName,
-  stableStageName,
+new MyStack({
+  scope: app,
+  id: `${serviceName}-${stageName}`,
+  props: {
+    serviceName,
+    stageName,
+    stableStageName,
+  },
 });
