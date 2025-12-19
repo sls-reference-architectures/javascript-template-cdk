@@ -12,13 +12,16 @@ class MyStack extends Stack {
         tracingEnabled: true,
       },
     });
-    const helloWorldFunction = this.createHelloWorldFunction(props);
+    const helloWorldFunction = this.createHelloWorldFunction({ props, apiUrl: api.url });
 
     this.createApiEndpoints(api, { hello: helloWorldFunction });
   }
 
-  createHelloWorldFunction(props) {
-    return this.createFunction(props, 'helloWorld.js', 'HelloWorldFunction');
+  createHelloWorldFunction({ props, apiUrl }) {
+    const func = this.createFunction(props, 'helloWorld.js', 'HelloWorldFunction');
+    func.addEnvironment('API_URL', apiUrl);
+
+    return func;
   }
 
   createFunction(props, fileName, logicalId) {
