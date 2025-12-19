@@ -2,6 +2,7 @@ import { Stack } from 'aws-cdk-lib';
 import { Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { RestApi, LambdaIntegration } from 'aws-cdk-lib/aws-apigateway';
+import { CfnOutput } from 'aws-cdk-lib';
 
 class MyStack extends Stack {
   constructor(scope, id, props) {
@@ -12,16 +13,18 @@ class MyStack extends Stack {
         tracingEnabled: true,
       },
     });
-    const helloWorldFunction = this.createHelloWorldFunction({ props, apiUrl: api.url });
-
+    const helloWorldFunction = this.createHelloWorldFunction(props);
     this.createApiEndpoints(api, { hello: helloWorldFunction });
+
+    // Outputs
+    new CfnOutput(this, 'RestApiUrl', {
+      description: 'URL of the Rest API',
+      value: api.url,
+    });
   }
 
-  createHelloWorldFunction({ props, apiUrl }) {
-    const func = this.createFunction(props, 'helloWorld.js', 'HelloWorldFunction');
-    func.addEnvironment('API_URL', apiUrl);
-
-    return func;
+  createHelloWorldFunction(props) {
+    return this.createFunction(props, 'helloWorld.js', 'HelloWorldFunction');
   }
 
   createFunction(props, fileName, logicalId) {

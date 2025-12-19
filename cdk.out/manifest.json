@@ -18,7 +18,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/b672bf3b2e975ad8ccc270c2e493229a1a907dd6dc66cdb4732cf940424d68f8.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/a4514b970f9b36e4c4268b222106bdef9a20176473148888ca47ebb9b4ff49a0.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": ["javascript-template-cdk-dev.assets"],
@@ -184,6 +184,10 @@
               "memorySize": "*",
               "environment": "*"
             }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {}
           }
         ],
         "/javascript-template-cdk-dev/HelloWorldFunction/ServiceRole": [
@@ -199,8 +203,8 @@
               "new Function2 (/Users/sethorell/src/sls-ra/javascript-template-cdk/node_modules/aws-cdk-lib/aws-lambda/lib/function.js:1:14132)",
               "new Function2 (/Users/sethorell/src/sls-ra/javascript-template-cdk/node_modules/aws-cdk-lib/core/lib/prop-injectable.js:1:681)",
               "new NodejsFunction (/Users/sethorell/src/sls-ra/javascript-template-cdk/node_modules/aws-cdk-lib/aws-lambda-nodejs/lib/function.js:1:2383)",
-              "MyStack.createFunction (file:///Users/sethorell/src/sls-ra/javascript-template-cdk/cdk/constructs/my-stack.js:25:18)",
-              "MyStack.createHelloWorldFunction (file:///Users/sethorell/src/sls-ra/javascript-template-cdk/cdk/constructs/my-stack.js:21:17)",
+              "MyStack.createFunction (file:///Users/sethorell/src/sls-ra/javascript-template-cdk/cdk/constructs/my-stack.js:28:18)",
+              "MyStack.createHelloWorldFunction (file:///Users/sethorell/src/sls-ra/javascript-template-cdk/cdk/constructs/my-stack.js:21:23)",
               "new MyStack (file:///Users/sethorell/src/sls-ra/javascript-template-cdk/cdk/constructs/my-stack.js:15:37)",
               "file:///Users/sethorell/src/sls-ra/javascript-template-cdk/cdk/main.js:21:1",
               "ModuleJob.run (node:internal/modules/esm/module_job:343:25)",

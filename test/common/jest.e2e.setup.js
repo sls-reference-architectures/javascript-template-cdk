@@ -27,6 +27,7 @@ const getStack = async (stackName) => {
   return stack;
 };
 
-const getApiUrl = (stack) => stack.Outputs.find((o) => o.OutputKey === 'HttpApiUrl').OutputValue;
+// const getApiUrl = (stack) => stack.Outputs.find((o) => o.OutputKey === 'HttpApiUrl').OutputValue;
+const getApiUrl = (stack) => stack.Outputs.find((o) => o.OutputKey === 'RestApiUrl').OutputValue;
 
 export default setup;
