@@ -1,0 +1,34 @@
+{
+  "version": "48.0.0",
+  "files": {
+    "c01a9babfdc64707574510bf7a9a95be0b761c91b710189b8bfb7e896efb8bda": {
+      "displayName": "HelloWorldFunction/Code",
+      "source": {
+        "path": "asset.c01a9babfdc64707574510bf7a9a95be0b761c91b710189b8bfb7e896efb8bda",
+        "packaging": "zip"
+      },
+      "destinations": {
+        "current_account-current_region-67069d24": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "c01a9babfdc64707574510bf7a9a95be0b761c91b710189b8bfb7e896efb8bda.zip",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    },
+    "b672bf3b2e975ad8ccc270c2e493229a1a907dd6dc66cdb4732cf940424d68f8": {
+      "displayName": "javascript-template-cdk-dev Template",
+      "source": {
+        "path": "javascript-template-cdk-dev.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region-fe8856b8": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "b672bf3b2e975ad8ccc270c2e493229a1a907dd6dc66cdb4732cf940424d68f8.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

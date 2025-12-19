@@ -1,0 +1,599 @@
+{
+  "Resources": {
+    "devjavascripttemplatecdk47EE6647": {
+      "Type": "AWS::ApiGateway::RestApi",
+      "Properties": {
+        "Name": "dev-javascript-template-cdk"
+      },
+      "Metadata": {
+        "aws:cdk:path": "javascript-template-cdk-dev/dev-javascript-template-cdk/Resource"
+      }
+    },
+    "devjavascripttemplatecdkDeploymentC1FD343D530177807cf5b0d98bc394919a01e692": {
+      "Type": "AWS::ApiGateway::Deployment",
+      "Properties": {
+        "Description": "Automatically created by the RestApi construct",
+        "RestApiId": {
+          "Ref": "devjavascripttemplatecdk47EE6647"
+        }
+      },
+      "DependsOn": [
+        "devjavascripttemplatecdkhelloGETBC12D4CC",
+        "devjavascripttemplatecdkhelloAF9413FB"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "javascript-template-cdk-dev/dev-javascript-template-cdk/Deployment/Resource",
+        "aws:cdk:do-not-refactor": true
+      }
+    },
+    "devjavascripttemplatecdkDeploymentStagedevD85E7DB3": {
+      "Type": "AWS::ApiGateway::Stage",
+      "Properties": {
+        "DeploymentId": {
+          "Ref": "devjavascripttemplatecdkDeploymentC1FD343D530177807cf5b0d98bc394919a01e692"
+        },
+        "RestApiId": {
+          "Ref": "devjavascripttemplatecdk47EE6647"
+        },
+        "StageName": "dev",
+        "TracingEnabled": true
+      },
+      "Metadata": {
+        "aws:cdk:path": "javascript-template-cdk-dev/dev-javascript-template-cdk/DeploymentStage.dev/Resource"
+      }
+    },
+    "devjavascripttemplatecdkhelloAF9413FB": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Fn::GetAtt": ["devjavascripttemplatecdk47EE6647", "RootResourceId"]
+        },
+        "PathPart": "hello",
+        "RestApiId": {
+          "Ref": "devjavascripttemplatecdk47EE6647"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "javascript-template-cdk-dev/dev-javascript-template-cdk/Default/hello/Resource"
+      }
+    },
+    "devjavascripttemplatecdkhelloGETApiPermissionjavascripttemplatecdkdevdevjavascripttemplatecdk192F9B7BGEThello122794DE": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": ["HelloWorldFunctionB2AB6E79", "Arn"]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "devjavascripttemplatecdk47EE6647"
+              },
+              "/",
+              {
+                "Ref": "devjavascripttemplatecdkDeploymentStagedevD85E7DB3"
+              },
+              "/GET/hello"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "javascript-template-cdk-dev/dev-javascript-template-cdk/Default/hello/GET/ApiPermission.javascripttemplatecdkdevdevjavascripttemplatecdk192F9B7B.GET..hello"
+      }
+    },
+    "devjavascripttemplatecdkhelloGETApiPermissionTestjavascripttemplatecdkdevdevjavascripttemplatecdk192F9B7BGEThelloA05E1C95": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": ["HelloWorldFunctionB2AB6E79", "Arn"]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "devjavascripttemplatecdk47EE6647"
+              },
+              "/test-invoke-stage/GET/hello"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "javascript-template-cdk-dev/dev-javascript-template-cdk/Default/hello/GET/ApiPermission.Test.javascripttemplatecdkdevdevjavascripttemplatecdk192F9B7B.GET..hello"
+      }
+    },
+    "devjavascripttemplatecdkhelloGETBC12D4CC": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "GET",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": ["HelloWorldFunctionB2AB6E79", "Arn"]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "ResourceId": {
+          "Ref": "devjavascripttemplatecdkhelloAF9413FB"
+        },
+        "RestApiId": {
+          "Ref": "devjavascripttemplatecdk47EE6647"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "javascript-template-cdk-dev/dev-javascript-template-cdk/Default/hello/GET/Resource"
+      }
+    },
+    "HelloWorldFunctionServiceRole8E0BD458": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "javascript-template-cdk-dev/HelloWorldFunction/ServiceRole/Resource"
+      }
+    },
+    "HelloWorldFunctionB2AB6E79": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+          },
+          "S3Key": "c01a9babfdc64707574510bf7a9a95be0b761c91b710189b8bfb7e896efb8bda.zip"
+        },
+        "Environment": {
+          "Variables": {
+            "POWERTOOLS_LOG_LEVEL": "DEBUG",
+            "SERVICE_NAME": "javascript-template-cdk",
+            "STAGE_NAME": "dev",
+            "STABLE_STAGE_NAME": "dev"
+          }
+        },
+        "Handler": "index.handler",
+        "MemorySize": 1024,
+        "Role": {
+          "Fn::GetAtt": ["HelloWorldFunctionServiceRole8E0BD458", "Arn"]
+        },
+        "Runtime": "nodejs22.x"
+      },
+      "DependsOn": ["HelloWorldFunctionServiceRole8E0BD458"],
+      "Metadata": {
+        "aws:cdk:path": "javascript-template-cdk-dev/HelloWorldFunction/Resource",
+        "aws:asset:path": "asset.c01a9babfdc64707574510bf7a9a95be0b761c91b710189b8bfb7e896efb8bda",
+        "aws:asset:is-bundled": true,
+        "aws:asset:property": "Code"
+      }
+    },
+    "HelloWorldFunctionLogGroupA7187FDD": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": {
+          "Fn::Join": [
+            "",
+            [
+              "/aws/lambda/",
+              {
+                "Ref": "HelloWorldFunctionB2AB6E79"
+              }
+            ]
+          ]
+        },
+        "RetentionInDays": 731
+      },
+      "UpdateReplacePolicy": "Retain",
+      "DeletionPolicy": "Retain",
+      "Metadata": {
+        "aws:cdk:path": "javascript-template-cdk-dev/HelloWorldFunction/LogGroup/Resource"
+      }
+    },
+    "CDKMetadata": {
+      "Type": "AWS::CDK::Metadata",
+      "Properties": {
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/61STWvjMBD9LdWxKFrq3HJrux8U+kWyN2PCxJo6SmRJSOOGrPB/XyzLTi4LPSwIRvNm5o3mjQpRLAtR3MApLGp5XGi1E3FDUB85nMI2glMNEJ7gLOIaA907VUYm0Wl7fnOkrAlsFVkgaPAVWmQrdss4Iw+1Ms0PAzuNkq3Id9j3FX/8MJmFf08cLRpKhKH2KvFlBnAq3zwSKHNJDwnveWQg5W/7bBtVg36SbFXGvvonnppfWPhmePI8ywDlfl+aJbElCr7GYDtf4wMELNktq2akjMyBvzA7oP07+NGd1Uip/AVpb2UZmc9IrtkTuTGWAWUIGw9XUtlpDzPrWNBzDe1OgoiPH+YdfatCUNYMCT87Uw9FU8rWWImHIF6TmaLDazpDapZiD0Zq9NlDQ/6c7y221p836g/OwU/lrbnStbYSp9Vdn//Xo6+4glbEtdVYjvJajT0Pyy2EgBTE/WB4WIqHrj4ipZVVXNsmiPhsm1/edq6MTOfr/AtGWaeMvh+8t45cR5dlp9WnBsO/UKbp+aCqOIRvn0Uhijtxd3MISi3yvGI92r/W+oQMgwMAAA=="
+      },
+      "Metadata": {
+        "aws:cdk:path": "javascript-template-cdk-dev/CDKMetadata/Default"
+      },
+      "Condition": "CDKMetadataAvailable"
+    }
+  },
+  "Outputs": {
+    "devjavascripttemplatecdkEndpointFE03FCB3": {
+      "Value": {
+        "Fn::Join": [
+          "",
+          [
+            "https://",
+            {
+              "Ref": "devjavascripttemplatecdk47EE6647"
+            },
+            ".execute-api.",
+            {
+              "Ref": "AWS::Region"
+            },
+            ".",
+            {
+              "Ref": "AWS::URLSuffix"
+            },
+            "/",
+            {
+              "Ref": "devjavascripttemplatecdkDeploymentStagedevD85E7DB3"
+            },
+            "/"
+          ]
+        ]
+      }
+    }
+  },
+  "Conditions": {
+    "CDKMetadataAvailable": {
+      "Fn::Or": [
+        {
+          "Fn::Or": [
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "af-south-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ap-east-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ap-northeast-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ap-northeast-2"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ap-northeast-3"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ap-south-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ap-south-2"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ap-southeast-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ap-southeast-2"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ap-southeast-3"
+              ]
+            }
+          ]
+        },
+        {
+          "Fn::Or": [
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ap-southeast-4"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ca-central-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "ca-west-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "cn-north-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "cn-northwest-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "eu-central-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "eu-central-2"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "eu-north-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "eu-south-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "eu-south-2"
+              ]
+            }
+          ]
+        },
+        {
+          "Fn::Or": [
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "eu-west-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "eu-west-2"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "eu-west-3"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "il-central-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "me-central-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "me-south-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "sa-east-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "us-east-1"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "us-east-2"
+              ]
+            },
+            {
+              "Fn::Equals": [
+                {
+                  "Ref": "AWS::Region"
+                },
+                "us-west-1"
+              ]
+            }
+          ]
+        },
+        {
+          "Fn::Equals": [
+            {
+              "Ref": "AWS::Region"
+            },
+            "us-west-2"
+          ]
+        }
+      ]
+    }
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Type": "AWS::SSM::Parameter::Value<String>",
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+    }
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  ["1", "2", "3", "4", "5"],
+                  {
+                    "Ref": "BootstrapVersion"
+                  }
+                ]
+              }
+            ]
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+        }
+      ]
+    }
+  }
+}
