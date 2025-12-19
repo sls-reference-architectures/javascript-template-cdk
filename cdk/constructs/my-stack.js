@@ -1,13 +1,14 @@
 import { Stack } from 'aws-cdk-lib';
 import { Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
-import { RestApi, LambdaIntegration } from 'aws-cdk-lib/aws-apigateway';
 import { CfnOutput } from 'aws-cdk-lib';
+import { HttpApi, HttpMethod } from 'aws-cdk-lib/aws-apigatewayv2';
+import { HttpLambdaIntegration } from 'aws-cdk-lib/aws-apigatewayv2-integrations';
 
 class MyStack extends Stack {
   constructor(scope, id, props) {
     super(scope, id, props);
-    const api = new RestApi(this, `${props.stageName}-${props.serviceName}`, {
+    const api = new HttpApi(this, `${props.stageName}-${props.serviceName}`, {
       deployOptions: {
         stageName: props.stageName,
         tracingEnabled: true,
@@ -17,9 +18,9 @@ class MyStack extends Stack {
     this.createApiEndpoints(api, { hello: helloWorldFunction });
 
     // Outputs
-    new CfnOutput(this, 'RestApiUrl', {
-      description: 'URL of the Rest API',
-      value: api.url,
+    new CfnOutput(this, 'HttpApiUrl', {
+      description: 'URL of the HTTP API',
+      value: api.apiEndpoint,
     });
   }
 
@@ -30,7 +31,7 @@ class MyStack extends Stack {
   createFunction(props, fileName, logicalId) {
     const func = new NodejsFunction(this, logicalId, {
       runtime: Runtime.NODEJS_22_X,
-      handler: 'handler',
+      handler: 'default',
       entry: `./src/${fileName}`,
       memorySize: 1024,
       environment: {
@@ -45,10 +46,15 @@ class MyStack extends Stack {
   }
 
   createApiEndpoints(api, functions) {
-    const helloResource = api.root.addResource('hello');
+    // const helloResource = api.root.addResource('hello');
 
-    // GET /hello
-    helloResource.addMethod('GET', new LambdaIntegration(functions.hello));
+    // // GET /hello
+    // helloResource.addMethod('GET', new HttpLambdaIntegration(functions.hello));
+    api.addRoutes({
+      path: '/hello',
+      methods: [HttpMethod.GET],
+      integration: new HttpLambdaIntegration('HelloWorldIntegration', functions.hello),
+    });
   }
 }
 

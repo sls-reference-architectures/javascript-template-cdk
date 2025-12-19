@@ -18,7 +18,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/a4514b970f9b36e4c4268b222106bdef9a20176473148888ca47ebb9b4ff49a0.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/8fe6205c4cb068a255824c9c99873a6abea8d193d4b3052f39a7c03e8e5ef6a6.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": ["javascript-template-cdk-dev.assets"],
@@ -33,12 +33,11 @@
         "/javascript-template-cdk-dev/dev-javascript-template-cdk": [
           {
             "type": "aws:cdk:analytics:construct",
-            "data": {
-              "deployOptions": {
-                "stageName": "*",
-                "tracingEnabled": true
-              }
-            }
+            "data": "*"
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": "*"
           }
         ],
         "/javascript-template-cdk-dev/dev-javascript-template-cdk/Resource": [
@@ -47,104 +46,46 @@
             "data": "devjavascripttemplatecdk47EE6647"
           }
         ],
-        "/javascript-template-cdk-dev/dev-javascript-template-cdk/Deployment": [
-          {
-            "type": "aws:cdk:analytics:construct",
-            "data": {
-              "description": "*",
-              "api": "*",
-              "retainDeployments": "*"
-            }
-          },
-          {
-            "type": "aws:cdk:analytics:method",
-            "data": {
-              "addToLogicalId": [{}]
-            }
-          },
-          {
-            "type": "aws:cdk:analytics:method",
-            "data": {
-              "addToLogicalId": [{}]
-            }
-          }
-        ],
-        "/javascript-template-cdk-dev/dev-javascript-template-cdk/Deployment/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "devjavascripttemplatecdkDeploymentC1FD343D530177807cf5b0d98bc394919a01e692"
-          }
-        ],
-        "/javascript-template-cdk-dev/dev-javascript-template-cdk/DeploymentStage.dev": [
-          {
-            "type": "aws:cdk:analytics:construct",
-            "data": {
-              "deployment": "*",
-              "stageName": "*",
-              "tracingEnabled": true
-            }
-          }
-        ],
-        "/javascript-template-cdk-dev/dev-javascript-template-cdk/DeploymentStage.dev/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "devjavascripttemplatecdkDeploymentStagedevD85E7DB3"
-          }
-        ],
-        "/javascript-template-cdk-dev/dev-javascript-template-cdk/Endpoint": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "devjavascripttemplatecdkEndpointFE03FCB3"
-          }
-        ],
-        "/javascript-template-cdk-dev/dev-javascript-template-cdk/Default": [
+        "/javascript-template-cdk-dev/dev-javascript-template-cdk/DefaultStage": [
           {
             "type": "aws:cdk:analytics:construct",
             "data": "*"
           }
         ],
-        "/javascript-template-cdk-dev/dev-javascript-template-cdk/Default/hello": [
+        "/javascript-template-cdk-dev/dev-javascript-template-cdk/DefaultStage/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devjavascripttemplatecdkDefaultStage771E5F52"
+          }
+        ],
+        "/javascript-template-cdk-dev/dev-javascript-template-cdk/GET--hello": [
           {
             "type": "aws:cdk:analytics:construct",
-            "data": {
-              "parent": "*",
-              "pathPart": "*"
-            }
+            "data": "*"
           }
         ],
-        "/javascript-template-cdk-dev/dev-javascript-template-cdk/Default/hello/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "devjavascripttemplatecdkhelloAF9413FB"
-          }
-        ],
-        "/javascript-template-cdk-dev/dev-javascript-template-cdk/Default/hello/GET": [
+        "/javascript-template-cdk-dev/dev-javascript-template-cdk/GET--hello/HelloWorldIntegration": [
           {
             "type": "aws:cdk:analytics:construct",
-            "data": {
-              "resource": "*",
-              "httpMethod": "*",
-              "integration": "*",
-              "options": "*"
-            }
+            "data": "*"
           }
         ],
-        "/javascript-template-cdk-dev/dev-javascript-template-cdk/Default/hello/GET/ApiPermission.javascripttemplatecdkdevdevjavascripttemplatecdk192F9B7B.GET..hello": [
+        "/javascript-template-cdk-dev/dev-javascript-template-cdk/GET--hello/HelloWorldIntegration/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "devjavascripttemplatecdkhelloGETApiPermissionjavascripttemplatecdkdevdevjavascripttemplatecdk192F9B7BGEThello122794DE"
+            "data": "devjavascripttemplatecdkGEThelloHelloWorldIntegration067D00AA"
           }
         ],
-        "/javascript-template-cdk-dev/dev-javascript-template-cdk/Default/hello/GET/ApiPermission.Test.javascripttemplatecdkdevdevjavascripttemplatecdk192F9B7B.GET..hello": [
+        "/javascript-template-cdk-dev/dev-javascript-template-cdk/GET--hello/HelloWorldIntegration-Permission": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "devjavascripttemplatecdkhelloGETApiPermissionTestjavascripttemplatecdkdevdevjavascripttemplatecdk192F9B7BGEThelloA05E1C95"
+            "data": "devjavascripttemplatecdkGEThelloHelloWorldIntegrationPermissionAAAF4588"
           }
         ],
-        "/javascript-template-cdk-dev/dev-javascript-template-cdk/Default/hello/GET/Resource": [
+        "/javascript-template-cdk-dev/dev-javascript-template-cdk/GET--hello/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "devjavascripttemplatecdkhelloGETBC12D4CC"
+            "data": "devjavascripttemplatecdkGEThello890C2401"
           }
         ],
         "/javascript-template-cdk-dev/HelloWorldFunction": [
@@ -184,10 +125,6 @@
               "memorySize": "*",
               "environment": "*"
             }
-          },
-          {
-            "type": "aws:cdk:analytics:method",
-            "data": {}
           }
         ],
         "/javascript-template-cdk-dev/HelloWorldFunction/ServiceRole": [
@@ -203,9 +140,9 @@
               "new Function2 (/Users/sethorell/src/sls-ra/javascript-template-cdk/node_modules/aws-cdk-lib/aws-lambda/lib/function.js:1:14132)",
               "new Function2 (/Users/sethorell/src/sls-ra/javascript-template-cdk/node_modules/aws-cdk-lib/core/lib/prop-injectable.js:1:681)",
               "new NodejsFunction (/Users/sethorell/src/sls-ra/javascript-template-cdk/node_modules/aws-cdk-lib/aws-lambda-nodejs/lib/function.js:1:2383)",
-              "MyStack.createFunction (file:///Users/sethorell/src/sls-ra/javascript-template-cdk/cdk/constructs/my-stack.js:28:18)",
-              "MyStack.createHelloWorldFunction (file:///Users/sethorell/src/sls-ra/javascript-template-cdk/cdk/constructs/my-stack.js:21:23)",
-              "new MyStack (file:///Users/sethorell/src/sls-ra/javascript-template-cdk/cdk/constructs/my-stack.js:15:37)",
+              "MyStack.createFunction (file:///Users/sethorell/src/sls-ra/javascript-template-cdk/cdk/constructs/my-stack.js:32:18)",
+              "MyStack.createHelloWorldFunction (file:///Users/sethorell/src/sls-ra/javascript-template-cdk/cdk/constructs/my-stack.js:28:17)",
+              "new MyStack (file:///Users/sethorell/src/sls-ra/javascript-template-cdk/cdk/constructs/my-stack.js:17:37)",
               "file:///Users/sethorell/src/sls-ra/javascript-template-cdk/cdk/main.js:21:1",
               "ModuleJob.run (node:internal/modules/esm/module_job:343:25)",
               "async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)",
@@ -243,6 +180,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "HelloWorldFunctionLogGroupA7187FDD"
+          }
+        ],
+        "/javascript-template-cdk-dev/HttpApiUrl": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HttpApiUrl"
           }
         ],
         "/javascript-template-cdk-dev/CDKMetadata/Default": [

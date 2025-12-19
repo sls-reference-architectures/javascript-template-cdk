@@ -7,6 +7,7 @@ describe('When calling /hello', () => {
       baseURL: process.env.API_URL,
       validateStatus: () => true,
     };
+    console.log(options);
     const path = '/hello';
 
     // ACT

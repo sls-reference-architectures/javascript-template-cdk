@@ -14,247 +14,147 @@
             "id": "dev-javascript-template-cdk",
             "path": "javascript-template-cdk-dev/dev-javascript-template-cdk",
             "constructInfo": {
-              "fqn": "aws-cdk-lib.aws_apigateway.RestApi",
+              "fqn": "aws-cdk-lib.aws_apigatewayv2.HttpApi",
               "version": "2.232.2",
-              "metadata": [{ "deployOptions": { "stageName": "*", "tracingEnabled": true } }]
+              "metadata": ["*", "*"]
             },
             "children": {
               "Resource": {
                 "id": "Resource",
                 "path": "javascript-template-cdk-dev/dev-javascript-template-cdk/Resource",
                 "constructInfo": {
-                  "fqn": "aws-cdk-lib.aws_apigateway.CfnRestApi",
+                  "fqn": "aws-cdk-lib.aws_apigatewayv2.CfnApi",
                   "version": "2.232.2"
                 },
                 "attributes": {
-                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::RestApi",
-                  "aws:cdk:cloudformation:props": { "name": "dev-javascript-template-cdk" }
-                }
-              },
-              "Deployment": {
-                "id": "Deployment",
-                "path": "javascript-template-cdk-dev/dev-javascript-template-cdk/Deployment",
-                "constructInfo": {
-                  "fqn": "aws-cdk-lib.aws_apigateway.Deployment",
-                  "version": "2.232.2",
-                  "metadata": [
-                    { "description": "*", "api": "*", "retainDeployments": "*" },
-                    { "addToLogicalId": [{}] },
-                    { "addToLogicalId": [{}] }
-                  ]
-                },
-                "children": {
-                  "Resource": {
-                    "id": "Resource",
-                    "path": "javascript-template-cdk-dev/dev-javascript-template-cdk/Deployment/Resource",
-                    "constructInfo": {
-                      "fqn": "aws-cdk-lib.aws_apigateway.CfnDeployment",
-                      "version": "2.232.2"
-                    },
-                    "attributes": {
-                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Deployment",
-                      "aws:cdk:cloudformation:props": {
-                        "description": "Automatically created by the RestApi construct",
-                        "restApiId": { "Ref": "devjavascripttemplatecdk47EE6647" }
-                      }
-                    }
+                  "aws:cdk:cloudformation:type": "AWS::ApiGatewayV2::Api",
+                  "aws:cdk:cloudformation:props": {
+                    "name": "dev-javascript-template-cdk",
+                    "protocolType": "HTTP"
                   }
                 }
               },
-              "DeploymentStage.dev": {
-                "id": "DeploymentStage.dev",
-                "path": "javascript-template-cdk-dev/dev-javascript-template-cdk/DeploymentStage.dev",
+              "DefaultStage": {
+                "id": "DefaultStage",
+                "path": "javascript-template-cdk-dev/dev-javascript-template-cdk/DefaultStage",
                 "constructInfo": {
-                  "fqn": "aws-cdk-lib.aws_apigateway.Stage",
-                  "version": "2.232.2",
-                  "metadata": [{ "deployment": "*", "stageName": "*", "tracingEnabled": true }]
-                },
-                "children": {
-                  "Resource": {
-                    "id": "Resource",
-                    "path": "javascript-template-cdk-dev/dev-javascript-template-cdk/DeploymentStage.dev/Resource",
-                    "constructInfo": {
-                      "fqn": "aws-cdk-lib.aws_apigateway.CfnStage",
-                      "version": "2.232.2"
-                    },
-                    "attributes": {
-                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Stage",
-                      "aws:cdk:cloudformation:props": {
-                        "deploymentId": {
-                          "Ref": "devjavascripttemplatecdkDeploymentC1FD343D530177807cf5b0d98bc394919a01e692"
-                        },
-                        "restApiId": { "Ref": "devjavascripttemplatecdk47EE6647" },
-                        "stageName": "dev",
-                        "tracingEnabled": true
-                      }
-                    }
-                  }
-                }
-              },
-              "Endpoint": {
-                "id": "Endpoint",
-                "path": "javascript-template-cdk-dev/dev-javascript-template-cdk/Endpoint",
-                "constructInfo": { "fqn": "aws-cdk-lib.CfnOutput", "version": "2.232.2" }
-              },
-              "Default": {
-                "id": "Default",
-                "path": "javascript-template-cdk-dev/dev-javascript-template-cdk/Default",
-                "constructInfo": {
-                  "fqn": "aws-cdk-lib.aws_apigateway.ResourceBase",
+                  "fqn": "aws-cdk-lib.aws_apigatewayv2.HttpStage",
                   "version": "2.232.2",
                   "metadata": ["*"]
                 },
                 "children": {
-                  "hello": {
-                    "id": "hello",
-                    "path": "javascript-template-cdk-dev/dev-javascript-template-cdk/Default/hello",
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "javascript-template-cdk-dev/dev-javascript-template-cdk/DefaultStage/Resource",
                     "constructInfo": {
-                      "fqn": "aws-cdk-lib.aws_apigateway.Resource",
+                      "fqn": "aws-cdk-lib.aws_apigatewayv2.CfnStage",
+                      "version": "2.232.2"
+                    },
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGatewayV2::Stage",
+                      "aws:cdk:cloudformation:props": {
+                        "apiId": { "Ref": "devjavascripttemplatecdk47EE6647" },
+                        "autoDeploy": true,
+                        "stageName": "$default"
+                      }
+                    }
+                  }
+                }
+              },
+              "GET--hello": {
+                "id": "GET--hello",
+                "path": "javascript-template-cdk-dev/dev-javascript-template-cdk/GET--hello",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigatewayv2.HttpRoute",
+                  "version": "2.232.2",
+                  "metadata": ["*"]
+                },
+                "children": {
+                  "HelloWorldIntegration": {
+                    "id": "HelloWorldIntegration",
+                    "path": "javascript-template-cdk-dev/dev-javascript-template-cdk/GET--hello/HelloWorldIntegration",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigatewayv2.HttpIntegration",
                       "version": "2.232.2",
-                      "metadata": [{ "parent": "*", "pathPart": "*" }]
+                      "metadata": ["*"]
                     },
                     "children": {
                       "Resource": {
                         "id": "Resource",
-                        "path": "javascript-template-cdk-dev/dev-javascript-template-cdk/Default/hello/Resource",
+                        "path": "javascript-template-cdk-dev/dev-javascript-template-cdk/GET--hello/HelloWorldIntegration/Resource",
                         "constructInfo": {
-                          "fqn": "aws-cdk-lib.aws_apigateway.CfnResource",
+                          "fqn": "aws-cdk-lib.aws_apigatewayv2.CfnIntegration",
                           "version": "2.232.2"
                         },
                         "attributes": {
-                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
+                          "aws:cdk:cloudformation:type": "AWS::ApiGatewayV2::Integration",
                           "aws:cdk:cloudformation:props": {
-                            "parentId": {
-                              "Fn::GetAtt": ["devjavascripttemplatecdk47EE6647", "RootResourceId"]
+                            "apiId": { "Ref": "devjavascripttemplatecdk47EE6647" },
+                            "integrationType": "AWS_PROXY",
+                            "integrationUri": {
+                              "Fn::GetAtt": ["HelloWorldFunctionB2AB6E79", "Arn"]
                             },
-                            "pathPart": "hello",
-                            "restApiId": { "Ref": "devjavascripttemplatecdk47EE6647" }
+                            "payloadFormatVersion": "2.0"
                           }
                         }
-                      },
-                      "GET": {
-                        "id": "GET",
-                        "path": "javascript-template-cdk-dev/dev-javascript-template-cdk/Default/hello/GET",
-                        "constructInfo": {
-                          "fqn": "aws-cdk-lib.aws_apigateway.Method",
-                          "version": "2.232.2",
-                          "metadata": [
-                            {
-                              "resource": "*",
-                              "httpMethod": "*",
-                              "integration": "*",
-                              "options": "*"
-                            }
+                      }
+                    }
+                  },
+                  "HelloWorldIntegration-Permission": {
+                    "id": "HelloWorldIntegration-Permission",
+                    "path": "javascript-template-cdk-dev/dev-javascript-template-cdk/GET--hello/HelloWorldIntegration-Permission",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                      "version": "2.232.2"
+                    },
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                      "aws:cdk:cloudformation:props": {
+                        "action": "lambda:InvokeFunction",
+                        "functionName": { "Fn::GetAtt": ["HelloWorldFunctionB2AB6E79", "Arn"] },
+                        "principal": "apigateway.amazonaws.com",
+                        "sourceArn": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "arn:",
+                              { "Ref": "AWS::Partition" },
+                              ":execute-api:",
+                              { "Ref": "AWS::Region" },
+                              ":",
+                              { "Ref": "AWS::AccountId" },
+                              ":",
+                              { "Ref": "devjavascripttemplatecdk47EE6647" },
+                              "/*/*/hello"
+                            ]
                           ]
-                        },
-                        "children": {
-                          "ApiPermission.javascripttemplatecdkdevdevjavascripttemplatecdk192F9B7B.GET..hello": {
-                            "id": "ApiPermission.javascripttemplatecdkdevdevjavascripttemplatecdk192F9B7B.GET..hello",
-                            "path": "javascript-template-cdk-dev/dev-javascript-template-cdk/Default/hello/GET/ApiPermission.javascripttemplatecdkdevdevjavascripttemplatecdk192F9B7B.GET..hello",
-                            "constructInfo": {
-                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
-                              "version": "2.232.2"
-                            },
-                            "attributes": {
-                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
-                              "aws:cdk:cloudformation:props": {
-                                "action": "lambda:InvokeFunction",
-                                "functionName": {
-                                  "Fn::GetAtt": ["HelloWorldFunctionB2AB6E79", "Arn"]
-                                },
-                                "principal": "apigateway.amazonaws.com",
-                                "sourceArn": {
-                                  "Fn::Join": [
-                                    "",
-                                    [
-                                      "arn:",
-                                      { "Ref": "AWS::Partition" },
-                                      ":execute-api:",
-                                      { "Ref": "AWS::Region" },
-                                      ":",
-                                      { "Ref": "AWS::AccountId" },
-                                      ":",
-                                      { "Ref": "devjavascripttemplatecdk47EE6647" },
-                                      "/",
-                                      {
-                                        "Ref": "devjavascripttemplatecdkDeploymentStagedevD85E7DB3"
-                                      },
-                                      "/GET/hello"
-                                    ]
-                                  ]
-                                }
+                        }
+                      }
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "javascript-template-cdk-dev/dev-javascript-template-cdk/GET--hello/Resource",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigatewayv2.CfnRoute",
+                      "version": "2.232.2"
+                    },
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGatewayV2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "apiId": { "Ref": "devjavascripttemplatecdk47EE6647" },
+                        "authorizationType": "NONE",
+                        "routeKey": "GET /hello",
+                        "target": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "integrations/",
+                              {
+                                "Ref": "devjavascripttemplatecdkGEThelloHelloWorldIntegration067D00AA"
                               }
-                            }
-                          },
-                          "ApiPermission.Test.javascripttemplatecdkdevdevjavascripttemplatecdk192F9B7B.GET..hello": {
-                            "id": "ApiPermission.Test.javascripttemplatecdkdevdevjavascripttemplatecdk192F9B7B.GET..hello",
-                            "path": "javascript-template-cdk-dev/dev-javascript-template-cdk/Default/hello/GET/ApiPermission.Test.javascripttemplatecdkdevdevjavascripttemplatecdk192F9B7B.GET..hello",
-                            "constructInfo": {
-                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
-                              "version": "2.232.2"
-                            },
-                            "attributes": {
-                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
-                              "aws:cdk:cloudformation:props": {
-                                "action": "lambda:InvokeFunction",
-                                "functionName": {
-                                  "Fn::GetAtt": ["HelloWorldFunctionB2AB6E79", "Arn"]
-                                },
-                                "principal": "apigateway.amazonaws.com",
-                                "sourceArn": {
-                                  "Fn::Join": [
-                                    "",
-                                    [
-                                      "arn:",
-                                      { "Ref": "AWS::Partition" },
-                                      ":execute-api:",
-                                      { "Ref": "AWS::Region" },
-                                      ":",
-                                      { "Ref": "AWS::AccountId" },
-                                      ":",
-                                      { "Ref": "devjavascripttemplatecdk47EE6647" },
-                                      "/test-invoke-stage/GET/hello"
-                                    ]
-                                  ]
-                                }
-                              }
-                            }
-                          },
-                          "Resource": {
-                            "id": "Resource",
-                            "path": "javascript-template-cdk-dev/dev-javascript-template-cdk/Default/hello/GET/Resource",
-                            "constructInfo": {
-                              "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
-                              "version": "2.232.2"
-                            },
-                            "attributes": {
-                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
-                              "aws:cdk:cloudformation:props": {
-                                "authorizationType": "NONE",
-                                "httpMethod": "GET",
-                                "integration": {
-                                  "type": "AWS_PROXY",
-                                  "uri": {
-                                    "Fn::Join": [
-                                      "",
-                                      [
-                                        "arn:",
-                                        { "Ref": "AWS::Partition" },
-                                        ":apigateway:",
-                                        { "Ref": "AWS::Region" },
-                                        ":lambda:path/2015-03-31/functions/",
-                                        { "Fn::GetAtt": ["HelloWorldFunctionB2AB6E79", "Arn"] },
-                                        "/invocations"
-                                      ]
-                                    ]
-                                  },
-                                  "integrationHttpMethod": "POST"
-                                },
-                                "resourceId": { "Ref": "devjavascripttemplatecdkhelloAF9413FB" },
-                                "restApiId": { "Ref": "devjavascripttemplatecdk47EE6647" }
-                              }
-                            }
-                          }
+                            ]
+                          ]
                         }
                       }
                     }
@@ -288,8 +188,7 @@
                   "entry": "*",
                   "memorySize": "*",
                   "environment": "*"
-                },
-                {}
+                }
               ]
             },
             "children": {
@@ -387,26 +286,10 @@
                         "POWERTOOLS_LOG_LEVEL": "DEBUG",
                         "SERVICE_NAME": "javascript-template-cdk",
                         "STAGE_NAME": "dev",
-                        "STABLE_STAGE_NAME": "dev",
-                        "API_URL": {
-                          "Fn::Join": [
-                            "",
-                            [
-                              "https://",
-                              { "Ref": "devjavascripttemplatecdk47EE6647" },
-                              ".execute-api.",
-                              { "Ref": "AWS::Region" },
-                              ".",
-                              { "Ref": "AWS::URLSuffix" },
-                              "/",
-                              { "Ref": "devjavascripttemplatecdkDeploymentStagedevD85E7DB3" },
-                              "/"
-                            ]
-                          ]
-                        }
+                        "STABLE_STAGE_NAME": "dev"
                       }
                     },
-                    "handler": "index.handler",
+                    "handler": "index.default",
                     "memorySize": 1024,
                     "role": { "Fn::GetAtt": ["HelloWorldFunctionServiceRole8E0BD458", "Arn"] },
                     "runtime": "nodejs22.x"
@@ -445,6 +328,11 @@
                 }
               }
             }
+          },
+          "HttpApiUrl": {
+            "id": "HttpApiUrl",
+            "path": "javascript-template-cdk-dev/HttpApiUrl",
+            "constructInfo": { "fqn": "aws-cdk-lib.CfnOutput", "version": "2.232.2" }
           },
           "CDKMetadata": {
             "id": "CDKMetadata",

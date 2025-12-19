@@ -1,63 +1,45 @@
 {
   "Resources": {
     "devjavascripttemplatecdk47EE6647": {
-      "Type": "AWS::ApiGateway::RestApi",
+      "Type": "AWS::ApiGatewayV2::Api",
       "Properties": {
-        "Name": "dev-javascript-template-cdk"
+        "Name": "dev-javascript-template-cdk",
+        "ProtocolType": "HTTP"
       },
       "Metadata": {
         "aws:cdk:path": "javascript-template-cdk-dev/dev-javascript-template-cdk/Resource"
       }
     },
-    "devjavascripttemplatecdkDeploymentC1FD343D530177807cf5b0d98bc394919a01e692": {
-      "Type": "AWS::ApiGateway::Deployment",
+    "devjavascripttemplatecdkDefaultStage771E5F52": {
+      "Type": "AWS::ApiGatewayV2::Stage",
       "Properties": {
-        "Description": "Automatically created by the RestApi construct",
-        "RestApiId": {
-          "Ref": "devjavascripttemplatecdk47EE6647"
-        }
-      },
-      "DependsOn": [
-        "devjavascripttemplatecdkhelloGETBC12D4CC",
-        "devjavascripttemplatecdkhelloAF9413FB"
-      ],
-      "Metadata": {
-        "aws:cdk:path": "javascript-template-cdk-dev/dev-javascript-template-cdk/Deployment/Resource",
-        "aws:cdk:do-not-refactor": true
-      }
-    },
-    "devjavascripttemplatecdkDeploymentStagedevD85E7DB3": {
-      "Type": "AWS::ApiGateway::Stage",
-      "Properties": {
-        "DeploymentId": {
-          "Ref": "devjavascripttemplatecdkDeploymentC1FD343D530177807cf5b0d98bc394919a01e692"
-        },
-        "RestApiId": {
+        "ApiId": {
           "Ref": "devjavascripttemplatecdk47EE6647"
         },
-        "StageName": "dev",
-        "TracingEnabled": true
+        "AutoDeploy": true,
+        "StageName": "$default"
       },
       "Metadata": {
-        "aws:cdk:path": "javascript-template-cdk-dev/dev-javascript-template-cdk/DeploymentStage.dev/Resource"
+        "aws:cdk:path": "javascript-template-cdk-dev/dev-javascript-template-cdk/DefaultStage/Resource"
       }
     },
-    "devjavascripttemplatecdkhelloAF9413FB": {
-      "Type": "AWS::ApiGateway::Resource",
+    "devjavascripttemplatecdkGEThelloHelloWorldIntegration067D00AA": {
+      "Type": "AWS::ApiGatewayV2::Integration",
       "Properties": {
-        "ParentId": {
-          "Fn::GetAtt": ["devjavascripttemplatecdk47EE6647", "RootResourceId"]
-        },
-        "PathPart": "hello",
-        "RestApiId": {
+        "ApiId": {
           "Ref": "devjavascripttemplatecdk47EE6647"
-        }
+        },
+        "IntegrationType": "AWS_PROXY",
+        "IntegrationUri": {
+          "Fn::GetAtt": ["HelloWorldFunctionB2AB6E79", "Arn"]
+        },
+        "PayloadFormatVersion": "2.0"
       },
       "Metadata": {
-        "aws:cdk:path": "javascript-template-cdk-dev/dev-javascript-template-cdk/Default/hello/Resource"
+        "aws:cdk:path": "javascript-template-cdk-dev/dev-javascript-template-cdk/GET--hello/HelloWorldIntegration/Resource"
       }
     },
-    "devjavascripttemplatecdkhelloGETApiPermissionjavascripttemplatecdkdevdevjavascripttemplatecdk192F9B7BGEThello122794DE": {
+    "devjavascripttemplatecdkGEThelloHelloWorldIntegrationPermissionAAAF4588": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -85,94 +67,37 @@
               {
                 "Ref": "devjavascripttemplatecdk47EE6647"
               },
-              "/",
-              {
-                "Ref": "devjavascripttemplatecdkDeploymentStagedevD85E7DB3"
-              },
-              "/GET/hello"
+              "/*/*/hello"
             ]
           ]
         }
       },
       "Metadata": {
-        "aws:cdk:path": "javascript-template-cdk-dev/dev-javascript-template-cdk/Default/hello/GET/ApiPermission.javascripttemplatecdkdevdevjavascripttemplatecdk192F9B7B.GET..hello"
+        "aws:cdk:path": "javascript-template-cdk-dev/dev-javascript-template-cdk/GET--hello/HelloWorldIntegration-Permission"
       }
     },
-    "devjavascripttemplatecdkhelloGETApiPermissionTestjavascripttemplatecdkdevdevjavascripttemplatecdk192F9B7BGEThelloA05E1C95": {
-      "Type": "AWS::Lambda::Permission",
+    "devjavascripttemplatecdkGEThello890C2401": {
+      "Type": "AWS::ApiGatewayV2::Route",
       "Properties": {
-        "Action": "lambda:InvokeFunction",
-        "FunctionName": {
-          "Fn::GetAtt": ["HelloWorldFunctionB2AB6E79", "Arn"]
+        "ApiId": {
+          "Ref": "devjavascripttemplatecdk47EE6647"
         },
-        "Principal": "apigateway.amazonaws.com",
-        "SourceArn": {
-          "Fn::Join": [
-            "",
-            [
-              "arn:",
-              {
-                "Ref": "AWS::Partition"
-              },
-              ":execute-api:",
-              {
-                "Ref": "AWS::Region"
-              },
-              ":",
-              {
-                "Ref": "AWS::AccountId"
-              },
-              ":",
-              {
-                "Ref": "devjavascripttemplatecdk47EE6647"
-              },
-              "/test-invoke-stage/GET/hello"
-            ]
-          ]
-        }
-      },
-      "Metadata": {
-        "aws:cdk:path": "javascript-template-cdk-dev/dev-javascript-template-cdk/Default/hello/GET/ApiPermission.Test.javascripttemplatecdkdevdevjavascripttemplatecdk192F9B7B.GET..hello"
-      }
-    },
-    "devjavascripttemplatecdkhelloGETBC12D4CC": {
-      "Type": "AWS::ApiGateway::Method",
-      "Properties": {
         "AuthorizationType": "NONE",
-        "HttpMethod": "GET",
-        "Integration": {
-          "IntegrationHttpMethod": "POST",
-          "Type": "AWS_PROXY",
-          "Uri": {
-            "Fn::Join": [
-              "",
-              [
-                "arn:",
-                {
-                  "Ref": "AWS::Partition"
-                },
-                ":apigateway:",
-                {
-                  "Ref": "AWS::Region"
-                },
-                ":lambda:path/2015-03-31/functions/",
-                {
-                  "Fn::GetAtt": ["HelloWorldFunctionB2AB6E79", "Arn"]
-                },
-                "/invocations"
-              ]
+        "RouteKey": "GET /hello",
+        "Target": {
+          "Fn::Join": [
+            "",
+            [
+              "integrations/",
+              {
+                "Ref": "devjavascripttemplatecdkGEThelloHelloWorldIntegration067D00AA"
+              }
             ]
-          }
-        },
-        "ResourceId": {
-          "Ref": "devjavascripttemplatecdkhelloAF9413FB"
-        },
-        "RestApiId": {
-          "Ref": "devjavascripttemplatecdk47EE6647"
+          ]
         }
       },
       "Metadata": {
-        "aws:cdk:path": "javascript-template-cdk-dev/dev-javascript-template-cdk/Default/hello/GET/Resource"
+        "aws:cdk:path": "javascript-template-cdk-dev/dev-javascript-template-cdk/GET--hello/Resource"
       }
     },
     "HelloWorldFunctionServiceRole8E0BD458": {
@@ -223,34 +148,10 @@
             "POWERTOOLS_LOG_LEVEL": "DEBUG",
             "SERVICE_NAME": "javascript-template-cdk",
             "STAGE_NAME": "dev",
-            "STABLE_STAGE_NAME": "dev",
-            "API_URL": {
-              "Fn::Join": [
-                "",
-                [
-                  "https://",
-                  {
-                    "Ref": "devjavascripttemplatecdk47EE6647"
-                  },
-                  ".execute-api.",
-                  {
-                    "Ref": "AWS::Region"
-                  },
-                  ".",
-                  {
-                    "Ref": "AWS::URLSuffix"
-                  },
-                  "/",
-                  {
-                    "Ref": "devjavascripttemplatecdkDeploymentStagedevD85E7DB3"
-                  },
-                  "/"
-                ]
-              ]
-            }
+            "STABLE_STAGE_NAME": "dev"
           }
         },
-        "Handler": "index.handler",
+        "Handler": "index.default",
         "MemorySize": 1024,
         "Role": {
           "Fn::GetAtt": ["HelloWorldFunctionServiceRole8E0BD458", "Arn"]
@@ -290,7 +191,7 @@
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAA/61STWvjMBD9LdWxKFrq3HJrux8U+kWyN2PCxJo6SmTJSOOGrPB/XyTLTi4LPSwIRvNm5o3mjQpRLAtR3MDJL2p5XGi1E2FDUB85nPw2QKcaIDzBWYQ1errvVBmYxE7b81tHyhrPVoF5ggZfoUW2YreMM3JQK9P8MLDTKNmKXI/DUPHHD5NZ+PfE0aKhROhrpxJfZoBO5ZtDAmUu6T7hAw8MpPxtn22jatBPkq3KMFT/xFPzCwvfxCfPs0Qo9/vSLIktUfA1etu7Gh/AY8luWTUjZWAduAtzB7R/Bze6sxoplb8g7a0sA3MZyTV7om6MZUAZwsbBlVR22sPMOhYMXEO7kyDC44d5R9cq75U1MeFnb+pYNKVsjZV48OI1mSkaX9MbUrMUezBSo8seGnLnfG+xte68UX9wDn4qZ82VrrWVOK3u+vy/HpGv4gpaEdZWYzkqbDUO3C+34D2SF/fRcL8UD319REpbq7i2jRfh2Ta/nO27MjCdr/NHGJWdMoYhem89dT1d9p22nxrEr6FMM/AorDj4b59FIYo7cXdz8Eot8shiPdq/y74jCYYDAAA="
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/61RzWoCMRB+lu5RYorx1psK/YFiy3pcROLuuI1ukiUzUWzIu5esWfEBCoGZ7yeTyYzgYi64eJIXnNbNadqpPQ8bkvWJyQvuguxVKwku8noWPLwT9YteVcWkYMWk2LLVwSx6xRK/IdlCNbIDGvjSesp8gh+GoHWSlDV38wOX4HAjsk7qfSN5WB3MNzitELP+6k2dvKNlZ2wDR+TrIYxqFQrnDSkNxcvQ7480TQcuIzDkrjnXoK27btQv3MWzctZoMJSZ2jY3MbLweP7vjbhlSmoeSttBtb3NoYPIcL6TiEDIFykwnPOlr09AS4nJ2NkWefi07Zuzvq9C0eV0LXNbcag2OmJkJaD1rs5bGcqmfSnTJuOXp95TZGmq/IjPZyG4mPHZ0xGVmub/8vIW/wBmaL6VQAIAAA=="
       },
       "Metadata": {
         "aws:cdk:path": "javascript-template-cdk-dev/CDKMetadata/Default"
@@ -299,30 +200,10 @@
     }
   },
   "Outputs": {
-    "devjavascripttemplatecdkEndpointFE03FCB3": {
+    "HttpApiUrl": {
+      "Description": "URL of the HTTP API",
       "Value": {
-        "Fn::Join": [
-          "",
-          [
-            "https://",
-            {
-              "Ref": "devjavascripttemplatecdk47EE6647"
-            },
-            ".execute-api.",
-            {
-              "Ref": "AWS::Region"
-            },
-            ".",
-            {
-              "Ref": "AWS::URLSuffix"
-            },
-            "/",
-            {
-              "Ref": "devjavascripttemplatecdkDeploymentStagedevD85E7DB3"
-            },
-            "/"
-          ]
-        ]
+        "Fn::GetAtt": ["devjavascripttemplatecdk47EE6647", "ApiEndpoint"]
       }
     }
   },
