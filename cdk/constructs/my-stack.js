@@ -30,6 +30,9 @@ class MyStack extends Stack {
 
   createFunction(props, fileName, logicalId) {
     const func = new NodejsFunction(this, logicalId, {
+      bundling: {
+        minify: true,
+      },
       runtime: Runtime.NODEJS_22_X,
       handler: 'default',
       entry: `./src/${fileName}`,
