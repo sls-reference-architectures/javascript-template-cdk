@@ -27,7 +27,7 @@
     "@aws-sdk/client-cloudformation": "^3.958.0",
     "@eslint/eslintrc": "^3.3.3",
     "@eslint/js": "^9.39.2",
-    "@swc/core": "^1.15.7",
+    "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
     "@types/aws-lambda": "^8.10.159",
     "aws-cdk": "^2.1100.1",
