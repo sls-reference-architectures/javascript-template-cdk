@@ -37,7 +37,7 @@ class MyStack extends Stack {
       bundling: {
         minify: true,
       },
-      runtime: Runtime.NODEJS_22_X,
+      runtime: Runtime.NODEJS_24_X,
       handler: 'handler',
       entry: `./src/${fileName}`,
       memorySize: 1024,
