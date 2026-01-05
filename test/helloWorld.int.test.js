@@ -1,4 +1,4 @@
-import helloHandler from '../src/helloWorld';
+import { handler as helloHandler } from '../src/helloWorld';
 
 // Use INT tests to invoke handlers and let them call AWS resources
 describe('When invoking helloWorld', () => {
@@ -10,7 +10,7 @@ describe('When invoking helloWorld', () => {
     const result = await helloHandler(event);
 
     // ASSERT
-    expect(result.message).toInclude('Hello');
+    expect(result.message).toContain('Hello');
     expect(result.event.answer).toEqual(42);
   });
 });
