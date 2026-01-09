@@ -1,4 +1,4 @@
-import cdk from 'aws-cdk-lib';
+import cdk, { Tags } from 'aws-cdk-lib';
 import { MyStack } from './constructs/my-stack.js';
 
 const app = new cdk.App();
@@ -27,3 +27,6 @@ new MyStack({
     stableStageName,
   },
 });
+
+Tags.of(app).add('serviceName', serviceName);
+Tags.of(app).add('stageName', stageName);
