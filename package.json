@@ -32,7 +32,7 @@
     "@types/aws-lambda": "^8.10.159",
     "aws-cdk": "^2.1104.0",
     "aws-cdk-lib": "^2.240.0",
-    "axios": "^1.13.2",
+    "axios": "^1.15.0",
     "constructs": "^10.4.5",
     "esbuild": "^0.27.2",
     "eslint": "^9.39.2",
