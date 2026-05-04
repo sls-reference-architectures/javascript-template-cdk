@@ -2,7 +2,15 @@
   "workbench.colorCustomizations": {
     "activityBar.background": "#133418",
     "titleBar.activeBackground": "#1B4922",
-    "titleBar.activeForeground": "#F7FCF8"
+    "titleBar.activeForeground": "#F7FCF8",
+    "titleBar.inactiveBackground": "#133418",
+    "titleBar.inactiveForeground": "#F7FCF8",
+    "statusBar.background": "#133418",
+    "statusBar.foreground": "#F7FCF8",
+    "statusBar.debuggingBackground": "#133418",
+    "statusBar.debuggingForeground": "#F7FCF8",
+    "statusBar.noFolderBackground": "#133418",
+    "statusBar.noFolderForeground": "#F7FCF8"
   },
   "cSpell.words": ["apigatewayv"]
 }
