@@ -140,3 +140,6 @@ vite.config.ts.timestamp-*
 
 # AWS CDK
 cdk.out/
+
+# Claude Code
+.claude/
