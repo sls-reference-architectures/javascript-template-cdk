@@ -25,7 +25,7 @@
   "homepage": "https://github.com/sls-reference-architectures/javascript-template-cdk#readme",
   "devDependencies": {
     "@aws-sdk/client-cloudformation": "^3.1041.0",
-    "@eslint/eslintrc": "^3.3.3",
+    "@eslint/eslintrc": "^3.3.5",
     "@eslint/js": "^9.39.2",
     "@swc/core": "^1.15.11",
     "@swc/jest": "^0.2.39",
