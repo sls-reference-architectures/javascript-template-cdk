@@ -31,7 +31,7 @@
     "@swc/jest": "^0.2.39",
     "@types/aws-lambda": "^8.10.159",
     "aws-cdk": "^2.1108.0",
-    "aws-cdk-lib": "^2.240.0",
+    "aws-cdk-lib": "^2.253.0",
     "axios": "^1.15.0",
     "constructs": "^10.4.5",
     "esbuild": "^0.27.2",
