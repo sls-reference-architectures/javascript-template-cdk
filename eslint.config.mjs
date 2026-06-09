@@ -1,7 +1,6 @@
 import js from '@eslint/js';
 import globals from 'globals';
 import { defineConfig, globalIgnores } from 'eslint/config';
-import pluginJest from 'eslint-plugin-jest';
 import noOnlyTests from 'eslint-plugin-no-only-tests';
 
 export default defineConfig([
@@ -15,8 +14,8 @@ export default defineConfig([
   },
   {
     files: ['**/*.test.js'],
-    plugins: { jest: pluginJest, 'no-only-tests': noOnlyTests },
-    languageOptions: { globals: pluginJest.environments.globals.globals },
+    plugins: { 'no-only-tests': noOnlyTests },
+    languageOptions: { globals: globals.jest },
     rules: { 'no-only-tests/no-only-tests': 'error' },
   },
 ]);
