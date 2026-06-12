@@ -46,7 +46,7 @@
     "prettier": "^3.8.3"
   },
   "dependencies": {
-    "@aws-lambda-powertools/logger": "^2.30.2",
+    "@aws-lambda-powertools/logger": "^2.33.1",
     "@middy/core": "^7.4.0"
   },
   "lint-staged": {
