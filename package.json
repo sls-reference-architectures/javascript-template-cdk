@@ -29,7 +29,6 @@
     "@eslint/js": "^10.0.1",
     "@swc/core": "^1.15.11",
     "@swc/jest": "^0.2.39",
-    "@types/aws-lambda": "^8.10.159",
     "aws-cdk": "^2.1108.0",
     "aws-cdk-lib": "^2.253.0",
     "axios": "^1.18.1",
