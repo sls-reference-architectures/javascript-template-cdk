@@ -18,7 +18,7 @@
     "url": "git+https://github.com/sls-reference-architectures/javascript-template-cdk.git"
   },
   "author": "Seth Orell",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/sls-reference-architectures/javascript-template-cdk/issues"
   },
