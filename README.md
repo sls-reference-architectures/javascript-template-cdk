@@ -21,4 +21,4 @@ Includes:
 - GitHub Actions script (CI)
 - Husky pre-commit hooks
 - Lint-staged
-- Webpack/Tree-shake
+- esbuild/Tree-shake
