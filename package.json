@@ -25,7 +25,6 @@
   "homepage": "https://github.com/sls-reference-architectures/javascript-template-cdk#readme",
   "devDependencies": {
     "@aws-sdk/client-cloudformation": "^3.1041.0",
-    "@eslint/eslintrc": "^3.3.5",
     "@eslint/js": "^10.0.1",
     "@swc/core": "^1.15.43",
     "@swc/jest": "^0.2.39",
@@ -34,7 +33,7 @@
     "axios": "^1.18.1",
     "constructs": "^10.6.0",
     "esbuild": "^0.28.1",
-    "eslint": "^10.6.0",
+    "eslint": "^10.7.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-no-only-tests": "^3.4.0",
     "globals": "^17.7.0",
