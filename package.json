@@ -41,7 +41,7 @@
     "jest": "^30.4.2",
     "jest-extended": "^7.0.0",
     "lint-staged": "^16.2.7",
-    "prettier": "^3.9.5"
+    "prettier": "^3.9.6"
   },
   "dependencies": {
     "@aws-lambda-powertools/logger": "^2.33.1",
