@@ -30,4 +30,3 @@ new MyStack({
 
 Tags.of(app).add('serviceName', serviceName);
 Tags.of(app).add('stageName', stageName);
-Tags.of(app).add('lumigo:auto-trace', 'true');
