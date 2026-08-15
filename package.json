@@ -29,7 +29,7 @@
     "@swc/core": "^1.15.46",
     "@swc/jest": "^0.2.39",
     "aws-cdk": "^2.1135.1",
-    "aws-cdk-lib": "^2.263.0",
+    "aws-cdk-lib": "^2.264.0",
     "axios": "^1.19.0",
     "constructs": "^10.7.1",
     "esbuild": "^0.28.1",
