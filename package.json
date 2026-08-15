@@ -32,7 +32,7 @@
     "aws-cdk-lib": "^2.264.0",
     "axios": "^1.19.0",
     "constructs": "^10.8.1",
-    "esbuild": "^0.28.1",
+    "esbuild": "^0.28.2",
     "eslint": "^10.8.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-no-only-tests": "^3.4.0",
